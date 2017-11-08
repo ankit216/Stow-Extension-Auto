@@ -28,8 +28,18 @@ public class DataFile {
     String stowExtPageVer = "//*[contains(text(),'Task')]";
     String task = "//*[contains(text(),'Task')]";
     String taskClose = "//*[contains(text(),'×')]";
-    String addCollection = "//*[@class=\"add__collection__input\"]";
+    String addCollection1 = "//*[@class=\"add__collection__input\"]";
     String addCollection2 = "//*[@class=\"add__collection__input\"]";
+    String addCollection3 = "//*[@class=\"add__collection__input\"]";
+    String addCollection4 = "//*[@class=\"add__collection__input\"]";
+    String verifyAddCollection1 = "//*[@id=\"root\"]/div/div/div[1]/div/div[2]/div[1]/div/div/div[4]/div/div/div/div[1]";
+    String verifyAddCollection2 = "//*[contains(@class,'overflow--hide') and text()='My Second Collection']";
+    String verifyAddCollection3 = "//*[contains(@class,'overflow--hide') and text()='My Third Collection']";
+    String verifyAddCollection4 = "//*[contains(@class,'overflow--hide') and text()='My Fourth Collection']";
+    String clickOn1stCollFevorite = "//span[contains(text(),'My First Collection')]/../span/img";
+    String clickOn3stCollFevorite = "//span[contains(text(),'My Third Collection')]/../span/img";
+    String verify1stFevoriteColl = "//span[contains(text(),'My First Collection')]/../span/img[@src=\"images/filled-favorite.svg\"]";
+    String verify3rdFevoriteColl = "//span[contains(text(),'My Third Collection')]/../span/img[@src=\"images/filled-favorite.svg\"]";
     String googleVerify = "//*[@id=\"hplogo\"]";
     String wikipediaVerification = "//*[@id=\"p-logo\"]/a";
     String vigoreportVerification = "//*[contains(text(),'Login')]";
@@ -42,8 +52,10 @@ public class DataFile {
     String clickOnShowHideButton = ".//*[@class=\"collection--count--inverse f--r btn btn-secondary\"]";
     String hideOpenTabSection = ".//*[@class=\"open-tabs-close\"]";
     String showOpenTabSection = ".//*[@class=\"col-3 col-md-3 col-xl-2 open-tabs\"]";
-    String cancelTabButton = ".//div[@class=\"open__tabs__list\"]/div[2]//span[@class=\"col-1 dlt-btn p-r-l-n\"]";
-    String backlog = "//*[@class=\"collection__item\"]";
+    String cancelTabButton = ".//*[@src=\"images/cancel.svg\"]";
+    String backlogCollection = "//*[@class=\"collection__item\"]";
+    String newAddedCollection = "//*[@class=\"collection__item collection__item__active\"]/div";
+    String newAddedCollectionVerify = "//*[@style=\"color: rgb(235, 67, 91);\"]";
 
 
 
@@ -187,15 +199,15 @@ public class DataFile {
         pause(3);
         driver.quit();
     }
-    public static void click(int x, int y) throws AWTException {
+    public static void mouseClick(int x, int y) throws AWTException {
         Robot bot = new Robot();
         bot.mouseMove(x, y);
         bot.mousePress(InputEvent.BUTTON1_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_MASK);
     }
-    public  void hower()  {
+    public  void hower( String xPath)  {
     Actions action = new Actions(driver);
-    WebElement we = driver.findElement(By.xpath(listedTab));
-action.moveToElement(we).moveToElement(driver.findElement(By.xpath(".//*[@src=\"images/cancel.svg\"]"))).click().build().perform();
+    WebElement we = driver.findElement(By.xpath(xPath));
+    action.moveToElement(we).moveToElement(driver.findElement(By.xpath(xPath))).click().build().perform();
     }
 }

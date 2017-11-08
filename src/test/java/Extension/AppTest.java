@@ -45,8 +45,8 @@ public class AppTest {
     @When("^Add 1st Collection \"(.*)\"$")
     public void Add_1st_Collection(String collName) throws InterruptedException {
         dataFile.pause(1);
-        dataFile.sendKeyOnElement(dataFile.addCollection, collName);
-        dataFile.pressEnterKey(dataFile.addCollection);
+        dataFile.sendKeyOnElement(dataFile.addCollection1, collName);
+        dataFile.pressEnterKey(dataFile.addCollection1);
     }
 
     @When("^Add 2nd Collection \"(.*)\"$")
@@ -55,15 +55,38 @@ public class AppTest {
         dataFile.sendKeyOnElement(dataFile.addCollection2, collName);
         dataFile.pressEnterKey(dataFile.addCollection2);
     }
+    @When("^Add 3rd Collection \"(.*)\"$")
+    public void Add_3rd_Collection(String collName) throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.sendKeyOnElement(dataFile.addCollection3, collName);
+        dataFile.pressEnterKey(dataFile.addCollection2);
+    }
+    @When("^Add 4th Collection \"(.*)\"$")
+    public void Add_4th_Collection(String collName) throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.sendKeyOnElement(dataFile.addCollection4, collName);
+        dataFile.pressEnterKey(dataFile.addCollection2);
+    }
 
     @When("^Verify 1st Added Collection$")
     public void Verify_1st_Added_Collection() throws InterruptedException {
         dataFile.pause(1);
-        dataFile.verifyElementIsDisplay(dataFile.addCollection);
+        dataFile.verifyElementIsDisplay(dataFile.addCollection1);
     }
 
     @When("^Verify 2nd Added Collection$")
     public void Verify_2nd_Added_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.verifyElementIsDisplay(dataFile.addCollection2);
+    }
+    @When("^Verify 3rd Added Collection$")
+    public void Verify_3rd_Added_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.verifyElementIsDisplay(dataFile.addCollection1);
+    }
+
+    @When("^Verify 4th Added Collection$")
+    public void Verify_4th_Added_Collection() throws InterruptedException {
         dataFile.pause(1);
         dataFile.verifyElementIsDisplay(dataFile.addCollection2);
     }
@@ -102,6 +125,7 @@ public class AppTest {
 
     @When("^New Tab Vigoreport Verification$")
     public void New_Tab_Vigoreport_Verification() {
+        dataFile.verifyElementIsDisplay(dataFile.vigoreportVerification);
         dataFile.switchTab(3);
     }
 
@@ -175,11 +199,49 @@ public class AppTest {
         dataFile.verifyElementIsDisplay(dataFile.showOpenTabSection);
     }
     @When("^Close Opened Tab In Open Tab Section$")
-    public void CloseOpened_Tab_In_Open_Tab_Section() throws InterruptedException {
+    public void Close_Opened_Tab_In_Open_Tab_Section() throws InterruptedException {
         dataFile.pause(1);
-        //dataFile.clickOnElement(dataFile.cancelTabButton);
-        dataFile.hower();
+        dataFile.hower(dataFile.cancelTabButton);
     }
+    @When("^Click On Added Collection$")
+    public void Click_On_Added_Collection()  {
+        dataFile.pause(1);
+        dataFile.clickOnElement(dataFile.newAddedCollection);
+    }
+    @When("^Verify My Collection$")
+    public void Verify_My_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.verifyElementIsDisplay(dataFile.newAddedCollectionVerify);
+    }
+    @When("^Click On Backlog Collection$")
+    public void Click_On_Backlog_Collection()  {
+        dataFile.pause(1);
+        dataFile.clickOnElement(dataFile.backlogCollection);
+    }
+    @When("^Click On Favorite Of 1st Collection$")
+    public void Click_On_Favorite_Of_1st_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.hower(dataFile.verifyAddCollection1);
+        dataFile.pause(10);
+        dataFile.clickOnElement(dataFile.clickOn1stCollFevorite);
+    }
+    @When("^Click On Favorite Of 3rd Collection$")
+    public void Click_On_Favorite_Of_3rd_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.hower(dataFile.verifyAddCollection3);
+        dataFile.clickOnElement(dataFile.clickOn3stCollFevorite);
+    }
+    @When("^Verify Click On Favorite 1st Collection$")
+    public void  Verify_Click_On_Favorite_1st_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.verifyElementIsDisplay(dataFile.verify1stFevoriteColl);
+    }
+    @When("^Verify Click On Favorite 3rd Collection$")
+    public void  Verify_Click_On_Favorite_3rd_Collection() throws InterruptedException {
+        dataFile.pause(1);
+        dataFile.verifyElementIsDisplay(dataFile.verify3rdFevoriteColl);
+    }
+
 
 }
 
